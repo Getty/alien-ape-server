@@ -19,7 +19,7 @@ sub aped {
 
 sub start_dist_aped {
 	my $self = shift;
-	chdir dist_dir('Alien-APE-Server').'/bin');
+	chdir dist_dir('Alien-APE-Server').'/bin';
 	exec('./aped', @_) or croak "couldn't exec aped: $!";
 }
 
