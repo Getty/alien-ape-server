@@ -3,7 +3,7 @@ use inc::Module::Install;
 # Create the Makefile
 name            'Alien-APE-Server';
 perl_version    '5.008';
-license         'perl';
+license         'gpl2';
 all_from        'lib/Alien/APE/Server.pm';
 requires        'File::ShareDir';
 test_requires   'Test::More' => '0.42';
