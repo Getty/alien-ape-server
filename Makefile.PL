@@ -17,28 +17,31 @@ my $S = ($^O eq 'MSWin32') ? "\\" : "\/";
 my $root = "\$(INST_LIB)${S}auto${S}share${S}dist${S}\$(DISTNAME)";
 
 sub MY::postamble {
-	return <<"APE_BUILD_SH";
+	return <<"APE_BUILD_MAKEFILE";
 
-all :: ape-server/bin/aped
+all :: ape-server/bin/aped ape-server/modules/lib/libmod_spidermonkey.so
 
 ape-server/bin/aped: ape-server/build.sh
 		( cd ape-server && .${S}build.sh )
 
+ape-server/modules/lib/libmod_spidermonkey.so :: ape-server/bin/aped
+		
 install :: install_aped
 		
-install_aped: ape-server/bin/aped
-		\$(NOECHO) \$(MKPATH) $root
-		\$(NOECHO) \$(CHMOD) 0755 $root
-		\$(NOECHO) \$(CP) -ar ape-server${S}bin $root
-		\$(NOECHO) \$(CP) -ar ape-server${S}modules $root
-		\$(NOECHO) \$(CP) -ar ape-server${S}scripts $root
+install_aped: ape-server/bin/aped ape-server/modules/lib/libmod_spidermonkey.so 
+		\$(MKPATH) $root
+		\$(CHMOD) 0755 $root
+		\$(CP) -ar ape-server${S}bin $root
+		\$(CP) -ar ape-server${S}modules $root
+		\$(CP) -ar ape-server${S}scripts $root
 
 clean :: delete_aped
 
 delete_aped:
 		\$(RM_F) ape-server${S}bin${S}aped
+		\$(RM_F) ape-server${S}modules${S}lib${S}libmod_spidermonkey.so
 		
-APE_BUILD_SH
+APE_BUILD_MAKEFILE
 }
 
 WriteAll;
