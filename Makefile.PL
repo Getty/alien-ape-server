@@ -7,6 +7,9 @@ license         'perl';
 all_from        'lib/Alien/APE/Server.pm';
 requires        'File::ShareDir';
 test_requires   'Test::More' => '0.42';
+test_requires   'FindBin';
+
+no_index		'ape-server';
 
 auto_install;
 
