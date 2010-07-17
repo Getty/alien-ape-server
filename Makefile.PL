@@ -19,21 +19,21 @@ sub MY::postamble {
 all :: ape-server/bin/aped
 
 ape-server/bin/aped: ape-server/build.sh
-		( cd ape-server && ./build.sh )
+		( cd ape-server && .${S}build.sh )
 
 install :: install_aped
 		
 install_aped: ape-server/bin/aped
 		\$(NOECHO) \$(MKPATH) $root
 		\$(NOECHO) \$(CHMOD) 0755 $root
-		\$(NOECHO) \$(CP) -ar ape-server/bin $root
-		\$(NOECHO) \$(CP) -ar ape-server/modules $root
-		\$(NOECHO) \$(CP) -ar ape-server/scripts $root
+		\$(NOECHO) \$(CP) -ar ape-server${S}bin $root
+		\$(NOECHO) \$(CP) -ar ape-server${S}modules $root
+		\$(NOECHO) \$(CP) -ar ape-server${S}scripts $root
 
 clean :: delete_aped
 
 delete_aped:
-		\$(RM_F) ape-server/bin/aped
+		\$(RM_F) ape-server${S}bin${S}aped
 		
 APE_BUILD_SH
 }

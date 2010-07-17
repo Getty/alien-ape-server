@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use File::ShareDir ':ALL';
 
-our $VERSION = '1.000000049001';
+our $VERSION = '1.000000049002';
 use 5.008;
 
 sub root {
