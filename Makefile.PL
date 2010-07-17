@@ -9,7 +9,7 @@ requires        'File::ShareDir';
 test_requires   'Test::More' => '0.42';
 test_requires   'FindBin';
 
-no_index		'ape-server';
+no_index        directory => 'ape-server';
 
 auto_install;
 
