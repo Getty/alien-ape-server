@@ -5,13 +5,28 @@ name            'Alien-APE-Server';
 perl_version    '5.008';
 license         'gpl2';
 all_from        'lib/Alien/APE/Server.pm';
+
 requires        'File::ShareDir';
+
 test_requires   'Test::More' => '0.42';
 test_requires   'FindBin';
+test_requires   'Proc::Background';
+test_requires   'LWP::UserAgent';
+test_requires   'HTTP::Request';
 
-no_index directory => 'ape-server';
+author_requires 'Module::Install::AuthorRequires';
+author_requires 'Module::Install::AutoLicense';
+author_requires 'Module::Install::AutoManifest';
 
+no_index        directory => 'ape-server';
+
+install_script  'alien_ape_server_dist';
+
+# get_file        'http://github.com/APE-Project/APE_Server/tarball/a5d079cece721c38f48177589ef3a9bd8b7137c2';
+
+auto_license;
 auto_install;
+auto_manifest;
 
 my $S = ($^O eq 'MSWin32') ? "\\" : "\/";
 my $root = "\$(INST_LIB)${S}auto${S}share${S}dist${S}\$(DISTNAME)";

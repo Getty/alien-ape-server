@@ -1,4 +1,6 @@
-^.git
-^.gitignore$
+^\.git
+^\.gitignore$
 ^Makefile$
-
+^README.md$
+^MANIFEST.SKIP$
+^Makefile\.old$
