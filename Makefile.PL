@@ -9,7 +9,7 @@ requires        'File::ShareDir';
 test_requires   'Test::More' => '0.42';
 test_requires   'FindBin';
 
-no_index        directory => 'ape-server';
+no_index directory => 'ape-server';
 
 auto_install;
 
@@ -26,9 +26,9 @@ ape-server/bin/aped: ape-server/build.sh
 
 ape-server/modules/lib/libmod_spidermonkey.so :: ape-server/bin/aped
 		
-install :: install_aped
+pure_all :: aped_to_blib
 		
-install_aped: ape-server/bin/aped ape-server/modules/lib/libmod_spidermonkey.so 
+aped_to_blib: ape-server/bin/aped ape-server/modules/lib/libmod_spidermonkey.so blibdirs
 		\$(MKPATH) $root
 		\$(CHMOD) 0755 $root
 		\$(CP) -ar ape-server${S}bin $root

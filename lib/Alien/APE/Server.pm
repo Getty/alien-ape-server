@@ -4,7 +4,7 @@ use warnings;
 use File::ShareDir ':ALL';
 use Carp;
 
-our $VERSION = '1.000000049003';
+our $VERSION = '1.000000049004';
 use 5.008;
 
 sub root {
